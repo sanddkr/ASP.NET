@@ -1,0 +1,59 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/app")
+}
+
+<div class="page-header">
+    <h1>Sport Service</h1>
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Teams</h2>
+            </div>
+            <div class="panel-body">
+                <ul class="list-unstyled" data-bind="foreach: teams">
+                    <li>
+                        <strong><span data-bind="text: type_of_sport"></span></strong>: <span data-bind="text: coach_name"></span> | <span data-bind="text: season"></span> | <span data-bind="text: fee"></span>
+                        <small><a href="#" data-bind="click: $parent.getTeamAthletes">Details</a></small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+    </div>
+
+    <!-- ko if:detail() -->
+
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Detail</h2>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Student Number</td>
+                        <td>Student Name</td>
+                        <td>Birthday</td>
+                        <td>Height</td>
+                        <td>Sport Type</td>
+                    </tr>
+                  </thead>
+                  <tbody data-bind="foreach: detail()">
+                        <tr>
+                            <td data-bind="text: student_number"></td>
+                            <td data-bind="text: student_name"></td>
+                            <td data-bind="text: birthday"></td>
+                            <td data-bind="text: height"></td>
+                            <td data-bind="text: type_of_sport"></td>
+                        </tr>
+                 </tbody>
+             </table>
+        </div>
+    </div>
+
+    <!-- /ko -->
+</div>
